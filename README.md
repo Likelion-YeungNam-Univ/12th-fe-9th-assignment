@@ -2,13 +2,13 @@
 
 ## 과제
 
-[강의자료]([https://jinlee1703.notion.site/6-React-2-054636b0c5ba4a31ae16d992476c135b#777f8e177411447e8da47c0e66842d4e](https://jinlee1703.notion.site/9-Routing-141618396d1747d4a4b8ade69d449394#e3a6fdae0a7e4a71b4d64e6e2f4af5cf))을 참고하여 CRUD가 가능한 페이지를 만들어보세요. 
+[강의자료]([https://jinlee1703.notion.site/6-React-2-054636b0c5ba4a31ae16d992476c135b#777f8e177411447e8da47c0e66842d4e](https://jinlee1703.notion.site/9-Routing-141618396d1747d4a4b8ade69d449394#e3a6fdae0a7e4a71b4d64e6e2f4af5cf])을 참고하여 CRUD가 가능한 페이지를 만들어보세요. 
 
 CRUD를 구현하기 위해 세션, 쿠키 등 어떤 것을 사용해도 좋습니다. 
 
 중첩 라우팅 등을 활용해 네비게이션 바도 구현해보세요.
 
-**기한: ~ 5.08**
+**기한: ~ 5.28**
 
 ## 제출 방법
 
