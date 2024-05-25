@@ -8,14 +8,25 @@ const Notice = () =>{
 
     // 공지사항 등록
     function postNotice(input){
-        setNotice(preNotice=>[...preNotice, input]);
+
+        // 삭제 시 필요한 고유한 id값 부여
+        const newNotice = { id: Date.now(), text: input };
+
+        // 공지사항 미기입 시 예외처리
+        if(input.length === 0){
+            alert("내용을 입력하세요!")
+            return
+        }
+        setNotice(preNotice =>[...preNotice, newNotice]);
         setInput(''); // 입력필드 비우기
     }
 
+    
     // 공지사항 삭제
-    function deleteNotice(index){
-        const newNotices = notices.filter((_, i)=> i !== index)
-        console.log("notices = ",notices);
+    function deleteNotice(id){
+        const newNotices = notices.filter(notice => notice.id !== id)
+        // console.log("notice.id = ", notices.id);
+        // console.log("notices = ",notices);
         setNotice(newNotices); 
         alert("공지사항을 삭제했습니다!");
     }
@@ -35,7 +46,7 @@ const Notice = () =>{
                     <InputArea 
                         type="text" 
                         value={input} 
-                        placeholder="공지사항을 입력해주세요" 
+                        placeholder="공지사항을 입력해주세요"
                         onChange={(e)=>{setInput(e.target.value)}}>    
                     </InputArea>
                     <PostButton onClick={() => postNotice(input)}>공지사항 등록</PostButton>
@@ -45,14 +56,15 @@ const Notice = () =>{
                 <GetContainer>
                     <h3>공지사항 목록</h3>
                     <ul>
-                        {notices.map((notice, index)=>
+                        {notices.map((notice)=>
                             {
                                 return(
-                                    <NoticeList>
-                                        {notice}
-                                        <div key={index}>
+                                    // key값으로 index값 사용 대신 id값 사용
+                                    <NoticeList key={notice.id}>
+                                        {notice.text}
+                                        <div>
                                             <NoticeButton>수정</NoticeButton>
-                                            <NoticeButton onClick={(e)=>deleteNotice(index)}>삭제</NoticeButton>
+                                            <NoticeButton onClick={()=>deleteNotice(notice.id)}>삭제</NoticeButton>
                                         </div>
 
                                     </NoticeList>
