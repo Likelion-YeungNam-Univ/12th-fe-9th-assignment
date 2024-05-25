@@ -3,7 +3,8 @@ import Home from "../components/Home"
 import Layout from "../components/Layout"
 import About from "../components/About"
 import TechService from "../components/TechService"
-import Notice from "../components/Notice"
+import Notice from "./notice/Notice"
+
 
 const Router=()=>{
     return(
