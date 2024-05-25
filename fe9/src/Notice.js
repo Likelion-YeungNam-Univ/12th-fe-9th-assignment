@@ -8,8 +8,16 @@ const Notice = () =>{
 
     // 공지사항 등록
     function postNotice(input){
-        setNotice(preNotice=>[...preNotice, input]); // 주의하기
+        setNotice(preNotice=>[...preNotice, input]);
         setInput(''); // 입력필드 비우기
+    }
+
+    // 공지사항 삭제
+    function deleteNotice(index){
+        const newNotices = notices.filter((_, i)=> i !== index)
+        console.log("notices = ",notices);
+        setNotice(newNotices); 
+        alert("공지사항을 삭제했습니다!");
     }
 
 
@@ -37,42 +45,29 @@ const Notice = () =>{
                 <GetContainer>
                     <h3>공지사항 목록</h3>
                     <ul>
-                        {notices.map((notice)=>
+                        {notices.map((notice, index)=>
                             {
                                 return(
                                     <NoticeList>
                                         {notice}
-                                        <div>
+                                        <div key={index}>
                                             <NoticeButton>수정</NoticeButton>
-                                            <NoticeButton>삭제</NoticeButton>
+                                            <NoticeButton onClick={(e)=>deleteNotice(index)}>삭제</NoticeButton>
                                         </div>
 
                                     </NoticeList>
-                                    
                                 )
-                            
                             })
                         }
                         
-                        
                     </ul>
 
-
                 </GetContainer>
-
-
-                {/* PUT */}
-
-
-
-                {/* DELETE */}
-
 
             </NoticeContainer>
         </div>
     )
 }
-
 
 
 const Title = styled.div`
@@ -86,7 +81,6 @@ const NoticeContainer = styled.div`
     margin-top: 40px;
     width: 100%;
     height: 100%;
-    /* background-color: red; */
 `
 
 const PostContainer = styled.div`
