@@ -1,12 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NoticeList from "../notice/NoticeList";
 import NoticeForm from "../notice/NoticeForm";
 import styled from 'styled-components';
+import {useCookies} from 'react-cookie';
+
 
 
 const Notice = () => {
+  const [cookies, setCookie] = useCookies(["notices"]);
   const [notices, setNotices] = useState([]);
   const [currentNotice, setCurrentNotice] = useState(null);
+
+  useEffect(() => {
+    if (cookies.notices) {
+      setNotices(cookies.notices || []);
+    }
+  }, []);
+
+ useEffect(()=>{
+  setCookie("notices", notices, {path:'/notice'});
+ },[notices, setCookie]);
 
   const addNotice = (notice) => {
     setNotices([...notices, { ...notice, id: Date.now() }]);

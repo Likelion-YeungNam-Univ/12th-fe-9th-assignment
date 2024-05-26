@@ -8,7 +8,7 @@ const NoticeList = ({ notices, deleteNotice, editNotice }) => {
       {notices.map(notice => (
         <ListItem key={notice.id}>
           <div>
-            <strong>{notice.title}</strong>
+            <h1>{notice.title}</h1>
             <p>{notice.content}</p>
           </div>
           <div>
