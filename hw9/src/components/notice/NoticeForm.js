@@ -1,22 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 
-const Form = styled.form`
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const Input = styled.input`
-  margin-bottom: 10px;
-  padding: 5px;
-`;
-
-const TextArea = styled.textarea`
-  margin-bottom: 10px;
-  padding: 5px;
-`;
-
 const NoticeForm = ({ addNotice, updateNotice, currentNotice, setCurrentNotice }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -48,6 +32,7 @@ const NoticeForm = ({ addNotice, updateNotice, currentNotice, setCurrentNotice }
   };
 
   return (
+    <div className="Form-Container">
     <Form onSubmit={handleSubmit}>
       <Input
         type="text"
@@ -62,7 +47,28 @@ const NoticeForm = ({ addNotice, updateNotice, currentNotice, setCurrentNotice }
       />
       <button type="submit">{currentNotice ? '수정' : '추가'}</button>
     </Form>
+    </div>
   );
 };
+ 
+
+
+const Form = styled.form`
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+`;
+
+const Input = styled.input`
+  margin-bottom: 10px;
+  padding: 5px;
+`;
+
+const TextArea = styled.textarea`
+  margin-bottom: 10px;
+  padding: 5px;
+`;
+
 
 export default NoticeForm;

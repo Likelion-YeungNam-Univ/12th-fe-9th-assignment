@@ -26,7 +26,9 @@ const Layout=()=>{
 
     return(
         <NavBar>
-            <div className="title.logo"></div>
+            <Logo>
+                <p>kokoa</p>
+            </Logo>
             <div className="navBtn">
                 <Button onClick={onClickHomeBtn}>소개</Button>
                 <Button onClick={onClickAboutBtn}>목표</Button>
@@ -40,7 +42,15 @@ const Layout=()=>{
 
 const NavBar =styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: left;
+`;
+
+const Logo = styled.h1`
+color: black;
+font-size:30px;
+font-family:"굴림";
+font-weight: 300;
+margin: 10px;
 `;
 
 const Button = styled.button`

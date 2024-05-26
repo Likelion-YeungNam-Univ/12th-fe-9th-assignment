@@ -26,7 +26,7 @@ const Notice = () => {
 
   return (
     <AppContainer>
-      <h1>공지사항</h1>
+      <Header>공지사항</Header>
       <NoticeForm
         addNotice={addNotice}
         updateNotice={updateNotice}
@@ -46,6 +46,16 @@ const AppContainer = styled.div`
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
+  
+  background-color: #F8F4E1;
+  color: #543310;
+  text-align: center;
 `;
 
+const Header = styled.div`
+  font-family: "굴림";
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+`;
 export default Notice;
