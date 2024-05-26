@@ -37,7 +37,7 @@ const Notice = () => {
 
     return (
         <div>
-            <h1>Notice 회사 공지사항</h1>
+            <h1>공지사항</h1>
             <div>
                 <input
                     type="text"

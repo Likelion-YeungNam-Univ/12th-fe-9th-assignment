@@ -4,9 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 const Layout=()=>{
     const navigate = useNavigate();
+
+    
     const onClickHomeButton = (e) => {
         e.preventDefault();
-        navigate('/');
+        navigate('/home');
     }
 
     const onClickNoticeButton = (e) => {
