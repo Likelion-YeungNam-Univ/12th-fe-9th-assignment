@@ -2,22 +2,23 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 const Notice = () =>{
-    const [input, setInput] = useState();
-    const [notices, setNotice] = useState([]);
+    const [input, setInput] = useState(); // 공지사항(등록) 내용 관리
+    const [notices, setNotices] = useState([]); // 공지사항 관리
 
 
     // 공지사항 등록
     function postNotice(input){
 
-        // 삭제 시 필요한 고유한 id값 부여
-        const newNotice = { id: Date.now(), text: input };
+        // 고유한 id값과 공지사항내용, 수정상태 속성 설정
+        const newNotice = { id: Date.now(), text: input, isEditing: false};
 
         // 공지사항 미기입 시 예외처리
         if(input.length === 0){
-            alert("내용을 입력하세요!")
-            return
+            alert("내용을 입력하세요!");
+            return;
         }
-        setNotice(preNotice =>[...preNotice, newNotice]);
+
+        setNotices(preNotice =>[...preNotice, newNotice]);
         setInput(''); // 입력필드 비우기
     }
 
@@ -25,12 +26,36 @@ const Notice = () =>{
     // 공지사항 삭제
     function deleteNotice(id){
         const newNotices = notices.filter(notice => notice.id !== id)
-        // console.log("notice.id = ", notices.id);
-        // console.log("notices = ",notices);
-        setNotice(newNotices); 
+        setNotices(newNotices); 
         alert("공지사항을 삭제했습니다!");
     }
 
+    
+    // 공지사항 수정 상태 토글
+    function toggleEditState(id){
+        const newNotice = notices.map((notice)=> notice.id === id 
+            ? {...notice, isEditing: !notice.isEditing} 
+            : notice);
+        setNotices(newNotice);
+        console.log("toggle!!");
+    }
+
+    // 공지사항 텍스트 업데이트
+    function handleChange(id, newText){
+        const newNotice = notices.map((notice)=> notice.id === id 
+            ? {...notice, text: newText} 
+            : notice);
+        setNotices(newNotice);
+    }
+
+    // 공지사항 수정 완료
+    function updateNotice(id){
+        const newNotice = notices.map((notice)=> notice.id === id 
+            ? {...notice, isEditing: false} 
+            : notice);
+        setNotices(newNotice);
+    }
+    
 
     return(
         <div>
@@ -61,9 +86,25 @@ const Notice = () =>{
                                 return(
                                     // key값으로 index값 사용 대신 id값 사용
                                     <NoticeList key={notice.id}>
-                                        {notice.text}
+
+                                        {/* 수정상태에 따른 컴포넌트 */}
+                                        {notice.isEditing
+                                        ?(
+                                            <textarea
+                                                value={notice.text}
+                                                onChange={(e)=>{handleChange(notice.id, e.target.value)}}
+                                            />
+                                        )
+                                        : (
+                                            <p>{notice.text}</p>
+                                        )}
+
                                         <div>
-                                            <NoticeButton>수정</NoticeButton>
+                                            {notice.isEditing
+                                                ? <NoticeButton onClick={()=>updateNotice(notice.id)}>완료</NoticeButton>
+                                                : <NoticeButton onClick={()=>toggleEditState(notice.id)}>수정</NoticeButton>
+                                            }
+
                                             <NoticeButton onClick={()=>deleteNotice(notice.id)}>삭제</NoticeButton>
                                         </div>
 
