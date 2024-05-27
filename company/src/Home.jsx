@@ -28,7 +28,7 @@ function Home() {
       <SizedBox/>
       <BestProduct/>
       <Viedo src="./img/video.mp4"  autoplay loop muted/>
-        
+      
     </>
   );
 }
