@@ -2,15 +2,15 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const Notice = () =>{
-    const [input, setInput] = useState(''); // 공지사항(등록) 내용 관리
-    const [notices, setNotices] = useState([]); // 공지사항 관리
+    const [input, setInput] = useState('');  // 공지사항(등록) 내용 관리
+    const [notices, setNotices] = useState([]);  // 공지사항 관리
 
 
     // 마운트 될때 localstorage에서 공지사항 가져오기
     useEffect(()=>{
         const storageNotice = localStorage.getItem('notices');
         if(storageNotice){
-            setNotices(JSON.parse(storageNotice));
+            setNotices(JSON.parse(storageNotice)); // 원래 object형태로 다시 바꿔주기
         }
     },[]);
 
@@ -20,7 +20,7 @@ const Notice = () =>{
         
         // 마운트 시에는 해당이 되지 않도록 함(새로고침 시 localStorage 지워짐 방지)
         if(notices.length!==0){
-            localStorage.setItem('notices', JSON.stringify(notices));
+            localStorage.setItem('notices', JSON.stringify(notices)); // object -> JSON형태로 변환
         }
     },[notices]);
 
@@ -28,7 +28,7 @@ const Notice = () =>{
     // 공지사항 등록
     function postNotice(){
 
-        // 고유한 id값과 공지사항내용, 수정상태 속성 설정
+        // 속성 설정_고유한 id값, 공지사항내용, 수정상태 
         const newNotice = { id: Date.now(), text: input, isEditing: false};
 
         // 공지사항 미기입 시 예외처리
@@ -84,8 +84,7 @@ const Notice = () =>{
             </Title>
             
             <NoticeContainer>
-
-                {/*왼쪽 - POST */}
+                {/*왼쪽 - 공지사항 입력 */}
                 <PostContainer>
                     <InputArea 
                         type="text" 
@@ -96,7 +95,7 @@ const Notice = () =>{
                     <PostButton onClick={() => postNotice()}>공지사항 등록</PostButton>
                 </PostContainer>
 
-                {/* 오른쪽 - GET*/}
+                {/* 오른쪽 - 공지사항 목록*/}
                 <GetContainer>
                     <ListTitle>공지사항 목록</ListTitle>
                     <Ul>
@@ -106,24 +105,26 @@ const Notice = () =>{
                                     // key값으로 index값 사용 대신 id값 사용
                                     <NoticeList key={notice.id}>
 
-                                        {/* 수정상태에 따른 컴포넌트 */}
+                                        {/* 수정상태에 따른 컴포넌트*/}
                                         {notice.isEditing
-                                        ?(
-                                            <textarea
-                                                value={notice.text}
-                                                onChange={(e)=>{handleChange(notice.id, e.target.value)}}
-                                            />
-                                        )
-                                        : (
-                                            <p>{notice.text}</p>
-                                        )}
+                                            ?(
+                                                // 수정가능 상태
+                                                <textarea
+                                                    value={notice.text}
+                                                    onChange={(e)=>{handleChange(notice.id, e.target.value)}}
+                                                />
+                                            )
+                                            : (
+                                                <p>{notice.text}</p>
+                                            )
+                                        }
 
+                                        {/* 버튼 */}
                                         <div>
                                             {notice.isEditing
-                                                ? <NoticeButton onClick={()=>updateNotice(notice.id)}>완료</NoticeButton>
-                                                : <NoticeButton onClick={()=>toggleEditState(notice.id)}>수정</NoticeButton>
+                                                ? <NoticeButton onClick={()=>updateNotice(notice.id)}>완료</NoticeButton> // 수정사항 업데이트
+                                                : <NoticeButton onClick={()=>toggleEditState(notice.id)}>수정</NoticeButton> // 수정상태 변경 토글
                                             }
-
                                             <NoticeButton onClick={()=>deleteNotice(notice.id)}>삭제</NoticeButton>
                                         </div>
 
@@ -135,7 +136,6 @@ const Notice = () =>{
                     </Ul>
 
                 </GetContainer>
-
             </NoticeContainer>
         </NoticeWrapper>
     )
@@ -196,6 +196,10 @@ const PostButton = styled.button`
     border-radius: 8px;
     font-weight: 800;
     cursor: pointer;
+    &:hover{
+        background-color: #87a37f;
+        border-color: #87a37f;
+    }
 `
 
 const ListTitle = styled.div`
@@ -229,6 +233,11 @@ const NoticeButton = styled.button`
     border-radius: 8px;
     font-weight: 500;
     margin-right: 8px;
+
+    &:hover{
+        background-color: gray;
+        border-color: gray;
+    }
 `
 
 

@@ -8,6 +8,8 @@ const Layout = () => {
     const onClickNavBtn = (e) =>{
         e.preventDefault();
         const text = e.target.innerText
+
+        // text에 따른 path로 이동
         const path = text === "home" ? "/"
                     : text === "회사소개" ? "/introduce"
                     : text === "회사목표" ? "/target"
@@ -25,6 +27,8 @@ const Layout = () => {
                 <Button onClick={onClickNavBtn}>공지사항</Button>
 
             </Navbar>
+
+            {/* 중첩라우팅 */}
             <Background>
                 <Outlet/>
             </Background>
