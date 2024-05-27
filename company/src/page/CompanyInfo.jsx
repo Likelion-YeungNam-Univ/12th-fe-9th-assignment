@@ -63,7 +63,7 @@ function CompanyInfo() {
   return (
     <Container>
       <Banner></Banner>
-      <NavigationBar itemArray={itemArray}></NavigationBar>
+      <NavigationBar></NavigationBar>
       <TextContainer>
         <MainText1>CEO</MainText1>
         <MainText2>MESSAGE</MainText2>
@@ -84,17 +84,6 @@ function CompanyInfo() {
     </Container>
   );
 }
-const itemArray = [
-  { name: "CEO 메시지", path: "/introduction" },
-  { name: "회사정보", path: "/introduction/company-info" },
-  { name: "회사연혁", path: "/introduction/history" },
-  { name: "윤리강령", path: "/introduction/ethics" },
-  { name: "투자정보", path: "/introduction/investor-info" },
-  { name: "CI", path: "/introduction/ci" },
-  { name: "채용정보", path: "/introduction/careers" },
-  { name: "찾아오시는 길", path: "/introduction/directions" },
-  { name: "안전보건 경영방침", path: "/introduction/safety-management" },
-];
 
 const companyInfo1 = [
   "안녕하십니까? (주)모나미 대표이사 송하경입니다.",

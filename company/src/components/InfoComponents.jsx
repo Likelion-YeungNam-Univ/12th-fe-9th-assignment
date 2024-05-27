@@ -66,7 +66,7 @@ export function Banner() {
   );
 }
 
-export function NavigationBar({ itemArray }) {
+export function NavigationBar() {
   return (
     <SubNavBar>
       {itemArray.map((item) => (
@@ -77,3 +77,14 @@ export function NavigationBar({ itemArray }) {
     </SubNavBar>
   );
 }
+const itemArray = [
+  { name: "CEO 메시지", path: "/introduction" },
+  { name: "회사정보", path: "/introduction/company-info" },
+  { name: "회사연혁", path: "/introduction/history" },
+  { name: "윤리강령", path: "/introduction/ethics" },
+  { name: "투자정보", path: "/introduction/investor-info" },
+  { name: "CI", path: "/introduction/ci" },
+  { name: "채용정보", path: "/introduction/careers" },
+  { name: "찾아오시는 길", path: "/introduction/directions" },
+  { name: "안전보건 경영방침", path: "/introduction/safety-management" },
+];
