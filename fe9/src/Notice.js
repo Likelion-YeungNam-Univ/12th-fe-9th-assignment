@@ -1,13 +1,32 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const Notice = () =>{
-    const [input, setInput] = useState(); // 공지사항(등록) 내용 관리
+    const [input, setInput] = useState(''); // 공지사항(등록) 내용 관리
     const [notices, setNotices] = useState([]); // 공지사항 관리
 
 
+    // 마운트 될때 localstorage에서 공지사항 가져오기
+    useEffect(()=>{
+        const storageNotice = localStorage.getItem('notices');
+        if(storageNotice){
+            setNotices(JSON.parse(storageNotice));
+        }
+    },[]);
+
+
+    // 공지사항 변경 시 localstorage에 저장
+    useEffect(()=>{
+        
+        // 마운트 시에는 해당이 되지 않도록 함(새로고침 시 localStorage 지워짐 방지)
+        if(notices.length!==0){
+            localStorage.setItem('notices', JSON.stringify(notices));
+        }
+    },[notices]);
+
+
     // 공지사항 등록
-    function postNotice(input){
+    function postNotice(){
 
         // 고유한 id값과 공지사항내용, 수정상태 속성 설정
         const newNotice = { id: Date.now(), text: input, isEditing: false};
@@ -74,7 +93,7 @@ const Notice = () =>{
                         placeholder="공지사항을 입력해주세요"
                         onChange={(e)=>{setInput(e.target.value)}}>    
                     </InputArea>
-                    <PostButton onClick={() => postNotice(input)}>공지사항 등록</PostButton>
+                    <PostButton onClick={() => postNotice()}>공지사항 등록</PostButton>
                 </PostContainer>
 
                 {/* 오른쪽 - GET*/}
