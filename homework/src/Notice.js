@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Notice = () => {
+  const nav = useNavigate();
   const [notices, setNotices] = useState([]);
 
   useEffect(() => {
@@ -15,7 +17,7 @@ export const Notice = () => {
         <tr style={{ textAlign: "center" }}>
           <td>아이디</td> <td>제목</td> <td>작성자</td>
         </tr>
-        {notices.map((notice) => (
+        {notices?.map((notice) => (
           <tr>
             <td>{notice.id}</td>
             <td>{notice.title}</td>
@@ -23,7 +25,13 @@ export const Notice = () => {
           </tr>
         ))}
       </table>
-      <button>글쓰기</button>
+      <button
+        onClick={() => {
+          nav("/createNotice");
+        }}
+      >
+        글쓰기
+      </button>
     </div>
   );
 };

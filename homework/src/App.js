@@ -6,6 +6,7 @@ import { Info } from "./Info";
 import { Goal } from "./Goal";
 import { Nav } from "./Nav";
 import { Notice } from "./Notice";
+import { CreateNotice } from "./CreateNotice";
 
 function App() {
   return (
@@ -15,8 +16,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/info" element={<Info />} />
           <Route path="/goal" element={<Goal />} />
-
           <Route path="/notice" element={<Notice />} />
+          <Route path="/createNotice" element={<CreateNotice />} />
         </Route>
       </Routes>
     </BrowserRouter>
