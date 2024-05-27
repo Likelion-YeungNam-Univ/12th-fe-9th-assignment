@@ -2,23 +2,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const NoticeCreate = () => {
+const NoticeCreate = ({handlePostNotice}) => {
 
-    const [noticeList, setNoticeList] = useState([]);
     const [inputTitle, setInputTitle] = useState('');
     const [inputContent, setInputContent] = useState('');
 
-    const navigate = useNavigate();
-    
-    const MoveToNotice = (e) => {
-        e.preventDefault();
-        navigate("/notice");
-    }
-
     const appendNotice = (e) => {
         e.preventDefault();
-        const newNotices = [...noticeList, {id:Date.now(), title:{inputTitle}, content:{inputContent}}];
-        setNoticeList(newNotices);
+        const newNotice = {id:Date.now(), title: inputTitle, content: inputContent};
+        handlePostNotice(newNotice);
         setInputTitle('');
         setInputContent('');
     }
@@ -30,7 +22,6 @@ const NoticeCreate = () => {
         setInputContent(e.target.value);
     }
     
-    console.log(noticeList)
     return(
         <Container>
             <h2>공지사항 작성</h2>
@@ -39,7 +30,6 @@ const NoticeCreate = () => {
                 <ContentInput onChange={handleInputContent} value={inputContent} placeholder="내용"></ContentInput>
             </form>
             <button onClick={appendNotice}>post</button>
-            <button onClick={MoveToNotice}>back</button>
         </Container>
     )
 }
