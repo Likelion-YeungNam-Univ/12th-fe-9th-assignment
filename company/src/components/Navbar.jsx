@@ -37,9 +37,6 @@ const DropdownContainer = styled.div`
 const Li = styled.div`
   padding: 10px;
   cursor: pointer;
-  &:hover {
-    color: red;
-  }
 `;
 
 const Logo = styled.img`
@@ -123,10 +120,15 @@ function NavIcon() {
 }
 
 function Dropdown({ items }) {
+  const navigate=useNavigate();
+
+  const goToCompanyInfo=(path)=>{
+    navigate(path);
+  }
   return (
     <DropdownContainer>
       {items.map((item, index) => (
-        <Li key={index}>{item}</Li>
+        <Li key={index} onClick={()=>goToCompanyInfo(item.path)}>{item}</Li>
       ))}
     </DropdownContainer>
   );
@@ -153,6 +155,9 @@ function Navbar() {
         "채용정보",
         "찾아오시는 길",
       ],
+      path: [
+        "/introduction/ceomessage",
+      ]
     },
     {
       name: "companyStory",
@@ -196,8 +201,13 @@ function Navbar() {
       <Logo src="/img/Logo.jpg" onClick={goToHome}></Logo>
 
       {item.map(({ name, title, items }) => (
-        <SubContainer key={name}>
+        <SubContainer
+          key={name}
+          onMouseEnter={() => toggleMenu(name)}
+          onMouseLeave={() => setIsMenuOpen(null)}
+        >
           <NavLink
+            to={`/${name}`}
             style={{ textDecoration: "none", color: "black" }}
             onClick={() => toggleMenu(name)}
           >

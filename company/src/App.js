@@ -5,6 +5,7 @@ import Home from './Home';
 import Introduction from './Introduction';
 import NotFound from './NotFound';
 import BestProduct from './components/BestProduct';
+import CompanyInfo from './page/CompanyInfo';
 // 다른 컴포넌트도 필요에 따라 불러옵니다.
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path='*' element={<NotFound/>}/>
         <Route path='/products/:id' element={<BestProduct></BestProduct>}></Route>
+        <Route path='/introduction' element={<CompanyInfo/>}/>
         {/* 여기에 더 많은 라우트를 추가할 수 있습니다 */}
       </Routes>
     </BrowserRouter>

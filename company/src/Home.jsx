@@ -14,6 +14,10 @@ const SizedBox=styled.div`
   background-color: white;
   height: 100px;
 `
+const Viedo=styled.video`
+  width: 100%;
+  height: auto;
+`
 function Home() {
   
   return (
@@ -22,7 +26,9 @@ function Home() {
       <Img src="/img/background.png" ></Img>
       <NewArrivals></NewArrivals>
       <SizedBox/>
-      <BestProduct />
+      <BestProduct/>
+      <Viedo src="./img/video.mp4"  autoplay loop muted/>
+        
     </>
   );
 }
