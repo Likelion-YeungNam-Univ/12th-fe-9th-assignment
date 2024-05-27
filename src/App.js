@@ -5,7 +5,7 @@ import Error from './Error'
 import Notice from './Notice';
 import Target from './Target';
 import Info from './Info';
-import NoticeCreate from './NoticeCreate';
+// import NoticeItem from './NoticeItem';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route path='/info' element={<Info/>}></Route>
         <Route path='/target' element={<Target/>}></Route>
         <Route path='/notice' element={<Notice/>}></Route>
-        <Route path='/notice/write' element={<NoticeCreate/>}></Route>
+        {/* <Route path='/notice/:id' element={<NoticeItem/>}></Route> */}
       </Route>
         <Route path='*' element={<Error/>}></Route>
     </Routes>
