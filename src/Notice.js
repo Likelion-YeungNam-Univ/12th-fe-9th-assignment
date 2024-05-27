@@ -24,9 +24,12 @@ const Notice = () => {
                     <button onClick={()=>setNoticeCreate(true)}>write</button>
                 )}
             </div>
-            <ul>
+
+            {/* notice 생성 중에 공지 리스트 안보이도록 함 */}
+            {!noticeCreate && <ul>
                 <NoticeList noticeList={noticeList}></NoticeList>
-            </ul>
+            </ul>}
+            
             <Outlet/>
         </div>
     )
