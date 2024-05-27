@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const Home = () => {
     return (
         <HomeContainer>
-            <h1>home 페이지</h1>
+            <h1>Home 페이지</h1>
             <CardContainer>
                 <Card to="/info">
                     <CardImage src={`${process.env.PUBLIC_URL}/1.png`} alt="Info" />
@@ -35,6 +35,7 @@ const CardContainer = styled.div`
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
+    margin left : 20px;
 `;
 
 const Card = styled(Link)`
@@ -47,11 +48,14 @@ const CardImage = styled.img`
     width: 150px;
     height: 150px;
     object-fit: cover;
+
 `;
 
 const CardText = styled.p`
     margin-top: 10px;
     font-size: 18px;
+    margin left : 20px;
+
 `;
 
 export default Home;

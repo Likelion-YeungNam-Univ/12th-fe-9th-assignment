@@ -2,7 +2,7 @@
 const Info = () => {
     return(
         <div>
-             <h1>영남대학교 소개</h1>
+             <h1>영남대학교 소개 페이지</h1>
              
              <img src={`${process.env.PUBLIC_URL}/1.png`} 
               style={{ width: '70%', height: 'auto' }} />   
