@@ -18,7 +18,13 @@ export const Notice = () => {
           <td>아이디</td> <td>제목</td> <td>작성자</td>
         </tr>
         {notices?.map((notice) => (
-          <tr>
+          <tr
+            style={{ cursor: "pointer" }}
+            key={notice.id}
+            onClick={() => {
+              nav(`/detail/${notice.id}`);
+            }}
+          >
             <td>{notice.id}</td>
             <td>{notice.title}</td>
             <td>{notice.writer}</td>
