@@ -77,7 +77,7 @@ const Notice = () =>{
     
 
     return(
-        <div>
+        <NoticeWrapper>
             <Title>
                 <h1>Notice Page</h1>
                 <p>공지사항 페이지입니다~</p>
@@ -98,8 +98,8 @@ const Notice = () =>{
 
                 {/* 오른쪽 - GET*/}
                 <GetContainer>
-                    <h3>공지사항 목록</h3>
-                    <ul>
+                    <ListTitle>공지사항 목록</ListTitle>
+                    <Ul>
                         {notices.map((notice)=>
                             {
                                 return(
@@ -132,16 +132,19 @@ const Notice = () =>{
                             })
                         }
                         
-                    </ul>
+                    </Ul>
 
                 </GetContainer>
 
             </NoticeContainer>
-        </div>
+        </NoticeWrapper>
     )
 }
 
 
+const NoticeWrapper = styled.div`
+    width: 80%;
+`
 const Title = styled.div`
     display: flex;
     flex-direction: column;
@@ -149,48 +152,83 @@ const Title = styled.div`
 `
 const NoticeContainer = styled.div`
     display: flex;
-    align-items: center;
     margin-top: 40px;
     width: 100%;
-    height: 100%;
+    height: 400px;
+    background-color: #f9fafb;
+    border: solid #cfcfcf 2px;
+    border-radius: 20px;
+    padding: 28px 40px;
 `
 
 const PostContainer = styled.div`
     height: 80%;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 40px;
+    
+`
+const GetContainer = styled.div`
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
 `
 const InputArea = styled.textarea`
-    width: 300px;
+    width: 90%;
     height: 300px;
+    border: solid #cfcfcf 2px;
+    border-radius: 20px;
+    padding: 8px;
 `
 const PostButton = styled.button`
     width: fit-content;
     height: fit-content;
     padding: 4px;
     margin-top: 8px;
+    background-color: #a1c398;
+    color: white;
+    border: solid #a1c398;
+    border-radius: 8px;
+    font-weight: 800;
+    cursor: pointer;
 `
 
-const GetContainer = styled.div`
-    height: 300px;
-    width: 300px;
+const ListTitle = styled.div`
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+`
+const Ul = styled.ul`
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 `
-
 const NoticeList = styled.li`
-    width: 240px;
+    width: 90%;
     background-color: #ededed;
     margin-top: 12px;
     border-radius: 10px;
+    padding: 8px 4px;
 `
 const NoticeButton = styled.button`
     width: fit-content;
     height: fit-content;
     padding: 0px 8px;
     margin-top: 8px;
+    cursor: pointer;
+
+    background-color: #545454;
+    color: white;
+    border: solid #545454;
+    border-radius: 8px;
+    font-weight: 500;
+    margin-right: 8px;
 `
 
 
