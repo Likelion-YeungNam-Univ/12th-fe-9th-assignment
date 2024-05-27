@@ -10,6 +10,7 @@ const Footer = () => {
 
         padding : 20px 80px;
         box-sizing : border-box;
+        width : 100%;
         height : 120px;
 
         font-size : 35px;
@@ -18,6 +19,9 @@ const Footer = () => {
 
         background-color : #000;
         color : #fff;
+        
+        position : absolute;
+        bottom : 0;
     `;
   return (
     <Footer>Footer</Footer>
