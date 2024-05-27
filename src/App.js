@@ -3,6 +3,7 @@ import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
 import Layout from "./layouts/Layout";
 import Introduction from "./components/Introduction";
+import Goal from "./components/Goal";
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
         <Header/>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="" element={<Introduction/>} />
+            <Route path="" element={<Introduction />} />
+            <Route path="goal" element={<Goal/>} />
           </Route>
         </Routes>
         <Footer/>
