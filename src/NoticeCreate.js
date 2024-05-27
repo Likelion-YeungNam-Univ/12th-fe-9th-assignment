@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const NoticeCreate = () => {
@@ -6,6 +7,13 @@ const NoticeCreate = () => {
     const [noticeList, setNoticeList] = useState([]);
     const [inputTitle, setInputTitle] = useState('');
     const [inputContent, setInputContent] = useState('');
+
+    const navigate = useNavigate();
+    
+    const MoveToNotice = (e) => {
+        e.preventDefault();
+        navigate("/notice");
+    }
 
     const appendNotice = (e) => {
         e.preventDefault();
@@ -31,6 +39,7 @@ const NoticeCreate = () => {
                 <ContentInput onChange={handleInputContent} value={inputContent} placeholder="내용"></ContentInput>
             </form>
             <button onClick={appendNotice}>post</button>
+            <button onClick={MoveToNotice}>back</button>
         </Container>
     )
 }
