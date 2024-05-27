@@ -11,6 +11,12 @@ export const Detail = () => {
 
   const idData = data.filter((notice) => notice.id == id);
 
+  const onDelete = () => {
+    let newArr = data.filter((notice) => notice.id != id);
+    localStorage.setItem("noticeList", JSON.stringify(newArr));
+    nav("/notice");
+  };
+
   return (
     <div>
       <h1> 제목 : {idData[0].title} </h1>
@@ -18,7 +24,7 @@ export const Detail = () => {
       <p>작성자 : {idData[0].writer}</p>
       <button
         onClick={() => {
-          nav(-1);
+          nav("/notice");
         }}
       >
         돌아가기
@@ -30,7 +36,7 @@ export const Detail = () => {
       >
         수정하기
       </button>
-      <button>삭제하기</button>
+      <button onClick={onDelete}>삭제하기</button>
     </div>
   );
 };

@@ -7,11 +7,13 @@ export const CreateNotice = () => {
 
   const onSubmit = () => {
     let data = localStorage.getItem("noticeList");
+    data = JSON.parse(data);
     let id;
     if (data == null || data == undefined) {
       id = 1;
+    } else if (data.length == 0) {
+      id = 1;
     } else {
-      data = JSON.parse(data);
       id = data[data.length - 1].id + 1;
     }
     let newNotice = {
