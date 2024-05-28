@@ -29,7 +29,7 @@ const Layout = () => {
         <Navbar>
             <NavItem>회사 소개</NavItem>
             <NavItem>회사 목표</NavItem>
-            <NavItem>공지사항</NavItem>
+            <NavItem>게시판</NavItem>
         </Navbar> 
         <Outlet/>
       </>
