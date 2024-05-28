@@ -53,7 +53,6 @@ const SearchImg = styled.div`
   margin-right: 10px;
 `;
 
-
 function NavIcon() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -70,16 +69,18 @@ function NavIcon() {
   );
 }
 
-function Dropdown({ items ,paths}) {
-  const navigate=useNavigate();
+function Dropdown({ items, paths }) {
+  const navigate = useNavigate();
 
-  const goToPage=(path)=>{
+  const goToPage = (path) => {
     navigate(path);
-  }
+  };
   return (
     <DropdownContainer>
       {items.map((item, index) => (
-        <Li key={index} onClick={()=>goToPage(paths[index])}>{item}</Li>
+        <Li key={index} onClick={() => goToPage(paths[index])}>
+          {item}
+        </Li>
       ))}
     </DropdownContainer>
   );
@@ -92,106 +93,27 @@ function Navbar() {
     setIsMenuOpen(isMenuOpen === menuName ? null : menuName);
   };
 
-  const item = [
-    {
-      name: "introduction",
-      title: "모나미 소개",
-      items: [
-        "CEO 메세지",
-        "회상정보",
-        "회사연혁",
-        "윤리강령",
-        "투자정보",
-        "CI",
-        "채용정보",
-        "찾아오시는 길",
-      ],
-      paths: [
-        "/introduction",
-        "/introduction/company-info",
-        "/introduction/history",
-        "/introduction/ethics",
-        "/introduction/investor-info",
-        "/introduction/ci",
-        "/introduction/careers",
-        "/introduction/directions" ,
-        "/introduction/safety-management"
-      ]
-    },
-    {
-      name: "companyStory",
-      title: "모나미제품",
-      items: [
-        "프리미엄 펜",
-        "펜•펜슬",
-        "마카•컬러링",
-        "노트•사무용품",
-        "잉크•리필",
-        "카탈로그",
-      ],
-      paths:[
-        "none","none","none","none","none","none",
-      ],
-    },
-    {
-      name: "newsVideo",
-      title: "NEWS & VIDEO",
-      items: ["보도자료", "동영상자료"],
-      paths:[
-        "none","none"
-      ],
-    },
-    {
-      name: "artCompetition",
-      title: "모나미 미술대회",
-      items: ["미술대회 소개", "수상작 발표"],
-      paths:[
-        "none","none",
-      ],
-    },
-    {
-      name: "support",
-      title: "고객지원",
-      items: ["자주묻는 질문", "문의하기", "이벤트"],
-      paths:[
-        "none","none","none",
-      ],
-    },
-    {
-      name: "purchaseDevelopment",
-      title: "기업 개발 / 구매",
-      items: ["대량 구매 문의", "기업 및 단체 구매", "산업용 맞춤 제품개발"],
-      paths:[
-        "none","none","none",
-      ],
-    },
-  ];
-
   const navigate = useNavigate();
 
   const goToHome = () => {
     navigate("/home");
   };
 
-  const goToPage=(path)=>{
-    navigate(path);
-  }
+
 
   return (
     <Container>
-      <Logo src="/img/Logo.jpg" onClick={goToHome} ></Logo>
+      <Logo src="/img/Logo.jpg" onClick={goToHome}></Logo>
 
-      {item.map(({ name, title, items,paths }) => (
+      {item.map(({ name, title, items, paths }) => (
         <SubContainer
           key={name}
           onMouseEnter={() => toggleMenu(name)}
           onMouseLeave={() => setIsMenuOpen(null)}
-          
         >
           <NavLink
             to={paths[0]}
             style={{ textDecoration: "none", color: "black" }}
-            
           >
             <div>{title}</div>
           </NavLink>
@@ -237,8 +159,71 @@ function Navbar() {
     </Container>
   );
 }
-
-
+const item = [
+  {
+    name: "introduction",
+    title: "모나미 소개",
+    items: [
+      "CEO 메세지",
+      "회상정보",
+      "회사연혁",
+      "윤리강령",
+      "투자정보",
+      "CI",
+      "채용정보",
+      "찾아오시는 길",
+    ],
+    paths: [
+      "/introduction",
+      "/introduction/company-info",
+      "/introduction/history",
+      "/introduction/ethics",
+      "/introduction/investor-info",
+      "/introduction/ci",
+      "/introduction/careers",
+      "/introduction/directions",
+      "/introduction/safety-management",
+    ],
+  },
+  {
+    name: "companyStory",
+    title: "모나미제품",
+    items: [
+      "프리미엄 펜",
+      "펜•펜슬",
+      "마카•컬러링",
+      "노트•사무용품",
+      "잉크•리필",
+      "카탈로그",
+    ],
+    paths: ["none", "none", "none", "none", "none", "none"],
+  },
+  {
+    name: "newsVideo",
+    title: "NEWS & VIDEO",
+    items: ["보도자료", "동영상자료"],
+    paths: ["none", "none"],
+  },
+  {
+    name: "artCompetition",
+    title: "모나미 미술대회",
+    items: ["미술대회 소개", "수상작 발표"],
+    paths: ["none", "none"],
+  },
+  {
+    name: "support",
+    title: "고객지원",
+    items: ["자주묻는 질문", "공지사항", "이벤트"],
+    paths: ["none", "/support/notification", "none"],
+  },
+  {
+    name: "purchaseDevelopment",
+    title: "기업 개발 / 구매",
+    items: ["대량 구매 문의", "기업 및 단체 구매", "산업용 맞춤 제품개발"],
+    paths: ["none", "none", "none"],
+  },
+];
+//햄버거 메뉴(코드펜 참고)
 const NavIconContainer = styled.div`
   width: 30px;
   height: 22.5px;
