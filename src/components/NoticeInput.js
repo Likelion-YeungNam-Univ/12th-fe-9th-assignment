@@ -50,23 +50,41 @@ const Btn = styled.button`
     }
 `;
 
-const NoticeInput = ({ setPost }) => {
+const NoticeInput = ({ setPost, toUpdatePost, post, setToUpdatePost}) => {
     
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [author, setAuthor] = useState("kim");
+    const [title, setTitle] = useState(toUpdatePost ? toUpdatePost.title : "");
+    const [description, setDescription] = useState(toUpdatePost ? toUpdatePost.description : "");
+    const [author, setAuthor] = useState(toUpdatePost ? toUpdatePost.author : "kim");
     
-    const addPost = () => { 
-        const pk = 3;
-        console.log('setPost',setPost)
-        setPost(prev => [...prev, { id: pk, title, description, author }]);
+    const addPost = (e) => { 
+
+        const id = toUpdatePost ? toUpdatePost.id : post.length+1;
+        console.log('id', id);
+        // console.log('toUpdatePost.id', toUpdatePost.id);
+
+        
+        if (toUpdatePost) { 
+            setPost(prev => prev.map(el => {
+                if (el.id === toUpdatePost.id) {
+                    console.log("excuted");
+                    return { id: toUpdatePost.id, title, description, author};
+                } else {
+                    return el;
+                }
+            }));
+            setToUpdatePost(null);
+        }
+        else {
+            setPost(prev => [...prev, { id : id, title, description, author: "kim" }]);
+        }
+
     }
 
   return (
       <div>
           <Title onChange={(event) => setTitle(event.target.value)} value={title}></Title>
           <TextArea onChange={(event) => setDescription(event.target.value)} value={description}></TextArea>
-          <Btn bgColor="#77dd77" onClick={addPost}>POST</Btn>
+          <Btn bgColor="#77dd77" onClick={(e) => addPost(e)}>POST</Btn>
     </div>
   )
 }

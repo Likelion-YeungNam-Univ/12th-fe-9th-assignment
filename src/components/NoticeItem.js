@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const NoticeItem = ({ post, setPost }) => {
+const NoticeItem = ({ post, setPost, setToUpdatePost }) => {
   const Wrapper = styled.div`
     width : 100%;
     height : 35px;
@@ -44,9 +44,14 @@ const NoticeItem = ({ post, setPost }) => {
       console.log(prev);
       return prev.filter(el => el.id !== postId);
     });
-   }
+  }
+  
+  const clickPostHandler = (e) => { 
+    setToUpdatePost(post);
+    console.log(e)
+  }
   return (
-    <Wrapper>
+    <Wrapper onClick={(e)=> clickPostHandler(e)}>
       <Id>{post.id}</Id>
       <Title>{post.title}</Title>
       <Author>{post.author}</Author>

@@ -12,6 +12,7 @@ const Notice = () => {
     ];
 
     const [post, setPost] = useState(repository);
+    const [toUpdatePost, setToUpdatePost] = useState(null);
 
     const Wrapper = styled.div`
         box-sizing : border-box;
@@ -62,11 +63,11 @@ const Notice = () => {
           <Main>
               <Left>
                   {post.map(el => { 
-                      return <NoticeItem post={el} setPost={setPost}></NoticeItem>
+                      return <NoticeItem key={el.id} post={el} setPost={setPost} setToUpdatePost={ setToUpdatePost }></NoticeItem>
                   })}
               </Left>
               <Right>
-                  <NoticeInput setPost={setPost}></NoticeInput>
+                  <NoticeInput setPost={setPost} toUpdatePost={toUpdatePost} post={post} setToUpdatePost={ setToUpdatePost }></NoticeInput>
               </Right>
           </Main>
       </Wrapper>
