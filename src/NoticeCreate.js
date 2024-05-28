@@ -37,7 +37,6 @@ const Container = styled.div`
   width: 70%;
   margin: auto;
   height: 60vh;
-
 `
 
 const TitleInput = styled.input`

@@ -1,6 +1,5 @@
 
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
 import NoticeList from "./NoticeList";
 import NoticeCreate from "./NoticeCreate";
 
@@ -44,7 +43,6 @@ const Notice = () => {
                 <NoticeList noticeList={noticeList} deleteNotice={deleteNotice}></NoticeList>
             </ul>}
 
-            <Outlet/>
         </div>
     )
 }

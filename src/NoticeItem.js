@@ -4,6 +4,7 @@ const NoticeItem = ({notice, deleteNotice}) => {
 
     const [isRead, setIsRead] = useState(false);
     const [isModified, setIsModified] = useState(false);
+    
     const [titleUpdate, setTitleUpdate] = useState(notice.title);
     const [contentUpdate, setContentUpdate] = useState(notice.content);
 

@@ -3,7 +3,6 @@ import NoticeItem from "./NoticeItem";
 
 const NoticeList = ({noticeList, deleteNotice}) => {
 
-
     return(
         <div>
             {noticeList && noticeList.map((e)=>{

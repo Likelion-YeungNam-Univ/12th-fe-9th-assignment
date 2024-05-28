@@ -1,4 +1,5 @@
 const NoticeListItem = (id, body, deletePost) => {
+    
     return(
         <li>
             <p>{body}</p>
