@@ -61,8 +61,8 @@ const Notice = () => {
 
           <Main>
               <Left>
-                  {repository.map(post => { 
-                      return <NoticeItem post={post}></NoticeItem>
+                  {post.map(el => { 
+                      return <NoticeItem post={el} setPost={setPost}></NoticeItem>
                   })}
               </Left>
               <Right>
