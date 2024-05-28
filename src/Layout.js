@@ -1,36 +1,39 @@
-    import { Outlet,useNavigate } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom";
+import './Layout.css'; 
 
-    const Layout = () => {
+const Layout = () => {
+  const navigate = useNavigate();
 
-        const navigate = useNavigate();
+  const onClickNavbtn = (e) => {
+    e.preventDefault();
+    e.target.innerText === 'signin' ? navigate('/signin') : navigate('/');
+  };
 
-        const onClickNavbtn = (e) => {
-            e.preventDefault();
-            e.target.innerText === 'signin'?navigate('/signin'):navigate('/');
-        }
+  const moveToSignIn = (e) => {
+    e.preventDefault();
+    navigate("/signin");
+  };
 
-        const moveToSignIn = (e) => {
-            e.preventDefault();
-            navigate("/signin");
-        }
+  const moveToHome = (e) => {
+    e.preventDefault();
+    navigate("/");
+  };
 
-        const moveToHome = (e) => {
-            e.preventDefault();
-            navigate("/");
-        }
+  return (
+    <div className="layout">
+      <div className="navbar">
+        <div className="navbar-logo">BCG</div>
+        <ul className="navbar-links">
+          <li><a href="/" onClick={moveToHome}>Home</a></li>
+          <li><a href="/signin" onClick={moveToSignIn}>Sign In</a></li>
+          <li><a href="#" onClick={onClickNavbtn}>About</a></li>
+          <li><a href="#" onClick={onClickNavbtn}>Goals</a></li>
+          <li><a href="#" onClick={onClickNavbtn}>Notices</a></li>
+        </ul>
+      </div>
+      <Outlet />
+    </div>
+  );
+};
 
-        return (
-            <div>
-                <div>
-                    <botton onClick= {moveToSignIn}>로그인 페이지로 이동하세요</botton>
-                    <botton onClick= {moveToHome}>홈페이지입니다</botton>
-                    <botton onClick = {onClickNavbtn} > signin</botton>
-                    <botton onClick = {onClickNavbtn} > signin</botton>
-                    <botton>네비게이션 버튼입니다</botton>
-                </div>
-                <Outlet/>
-            </div>
-        );
-    };
-
-    export default Layout;
+export default Layout;
