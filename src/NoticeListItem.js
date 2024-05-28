@@ -62,11 +62,14 @@ const NoticeListItem = ({
     <Box>
       <ItemBox>
         <DetailBox>
-          <span>{id}</span>
-          <span>{title}</span>
-          <span>{author}</span>
-          <span>{detail}</span>
+          <TitleBox>
+            <Id>{id}</Id>
+            <Author>{author}</Author>
+            <Title>{title}</Title>
+          </TitleBox>
+          <Detail>{detail}</Detail>
         </DetailBox>
+
         {update === true ? (
           <UpdateInputBox>
             <TitleInput onChange={handleTitle} value={inputTitle} />
@@ -94,8 +97,32 @@ const ItemBox = styled.div`
 `;
 
 const DetailBox = styled.div`
+  width: 80%;
+`;
+
+const TitleBox = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 30px;
+`;
+
+const Id = styled.div`
+  width: 10px;
+`;
+
+const Author = styled.div`
+  width: 100px;
+`;
+
+const Title = styled.div`
+  width: 80%;
+`;
+
+const Detail = styled.div`
+  border-radius: 5px;
+  border: 1px solid gray;
+  margin: 10px;
+  margin-left: 30px;
+  padding: 5px;
 `;
 
 const BtnBox = styled.div`
@@ -109,6 +136,7 @@ const Btn = styled.button`
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
+  height: 30px;
 `;
 
 const UpdateInputBox = styled.form`
