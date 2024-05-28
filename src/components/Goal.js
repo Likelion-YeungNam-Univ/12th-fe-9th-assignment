@@ -30,7 +30,7 @@ const Goal = () => {
     const Item = styled.div`
         background-color : ${props => props.bgColor};
         opacity : 0.9;
-        width : 300px;
+        width : 30%;
         height : 300px;
         border-radius : 20px;
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
