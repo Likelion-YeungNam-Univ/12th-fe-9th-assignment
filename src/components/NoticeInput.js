@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const NoticeInput = () => {
@@ -52,12 +52,16 @@ const NoticeInput = () => {
         }
     `;
 
+    
+const [title, setTitle] = useState("");
+const [description, setDescription] = useState("");
+const [author, setAuthor] = useState("kim");
+
   return (
       <div>
-          <Title></Title>
-          <TextArea></TextArea>
+          <Title onChange={(e) => setTitle(e.target.value)}></Title>
+          <TextArea onChange={(e) => setDescription(e.target.value)}></TextArea>
           <Btn bgColor="#77dd77">POST</Btn>
-          <Btn bgColor="#ff6961">Delete</Btn>
     </div>
   )
 }
