@@ -15,7 +15,6 @@ const Introduction = () => {
 
     const Description = styled.p`
         font-size : 18px;
-        
     `;
 
   return (
@@ -24,7 +23,7 @@ const Introduction = () => {
           <Description>
               저희는 항상 꿈을 향해 끊임없이 달려나가는 회사입니다.
               <br />
-              파도는 매번 다르게 온다고 합니다. 우리의 여정또한 끊임없는 파도와 함께할 것 입니다.
+              파도는 매번 다르게 온다고 합니다. 우린 그 파도를 타고 나아갈 것 입니다.
               <br />
               우리의 항해의 끝은 성공입니다.
               <br />

@@ -46,7 +46,7 @@ const Goal = () => {
       <Wrapper>
         <Title>우리의 목표</Title>
         <Description>
-              끊임없이 꿈을 향해 나아가는 우리 회사의 돛은 건강한 사회 조성으로 맞춰져 있습니다. <br /><br />
+              끊임없이 꿈을 향해 나아가는 우리 회사의 돛은 건강한 사회 조성을 향해 있습니다. <br /><br />
               다음 3가지의 목표가 우리가 달성해야할 과제입니다.
           </Description>
           <Container>
