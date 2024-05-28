@@ -10,11 +10,23 @@ const Title = styled.input`
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     box-sizing : border-box;
     padding : 5px 10px;
+    margin-bottom : 10px;
+`;
+
+const Author = styled.input`
+    outline : none;
+    border : 1px solid #f1f1f1;
+    width : 30%;
+    border-radius : 5px;
+    height : 35px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-sizing : border-box;
+    padding : 5px 10px;
 `;
 
 const TextArea = styled.textarea`
     width : 100%;
-    height : 350px;
+    height :300px;
     margin : 10px 0;
     box-sizing : border-box;
     padding : 10px;
@@ -54,7 +66,7 @@ const NoticeInput = ({ setPost, toUpdatePost, post, setToUpdatePost}) => {
     
     const [title, setTitle] = useState(toUpdatePost ? toUpdatePost.title : "");
     const [description, setDescription] = useState(toUpdatePost ? toUpdatePost.description : "");
-    const [author, setAuthor] = useState(toUpdatePost ? toUpdatePost.author : "kim");
+    const [author, setAuthor] = useState(toUpdatePost ? toUpdatePost.author : "익명");
     
     const addPost = (e) => { 
 
@@ -82,8 +94,9 @@ const NoticeInput = ({ setPost, toUpdatePost, post, setToUpdatePost}) => {
 
   return (
       <div>
-          <Title onChange={(event) => setTitle(event.target.value)} value={title}></Title>
-          <TextArea onChange={(event) => setDescription(event.target.value)} value={description}></TextArea>
+          <Title onChange={(event) => setTitle(event.target.value)} value={title} placeholder='제목'></Title>
+          <Author onChange={(event) => setAuthor(event.target.value)} value={author} placeholder='작성자'></Author>
+          <TextArea onChange={(event) => setDescription(event.target.value)} value={description} placeholder='내용'></TextArea>
           <Btn bgColor="#77dd77" onClick={(e) => addPost(e)}>POST</Btn>
     </div>
   )
