@@ -1,20 +1,14 @@
-// import { useNavigate } from "react-router-dom";
 import NoticeItem from "./NoticeItem";
 
-const NoticeList = ({noticeList}) => {
+const NoticeList = ({noticeList, deleteNotice}) => {
 
-    // const navigate = useNavigate();
-
-    // const handleRead = (id)=>{
-    //     navigate(`/notice/${id}`);
-    // }
 
     return(
         <div>
             {noticeList && noticeList.map((e)=>{
                 return (
                     <div key={e.id}>
-                        <NoticeItem notice={e}/>
+                        <NoticeItem notice={e} deleteNotice={deleteNotice}/>
                     </div>
                 )
             })}

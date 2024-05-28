@@ -13,6 +13,17 @@ const Notice = () => {
         setNoticeCreate(false);
     };
 
+    const deleteNotice = (id) => {
+        const newNoticeList = noticeList.filter((e)=>{
+            if(e.id === id){
+                return false;
+            } else{
+                return true;
+            }
+        })
+        setNoticeList(newNoticeList);
+    }
+
     console.log(noticeList)
     return(
         <div>
@@ -27,9 +38,9 @@ const Notice = () => {
 
             {/* notice 생성 중에 공지 리스트 안보이도록 함 */}
             {!noticeCreate && <ul>
-                <NoticeList noticeList={noticeList}></NoticeList>
+                <NoticeList noticeList={noticeList} deleteNotice={deleteNotice}></NoticeList>
             </ul>}
-            
+
             <Outlet/>
         </div>
     )

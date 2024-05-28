@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const NoticeItem = ({notice}) => {
+const NoticeItem = ({notice, deleteNotice}) => {
 
     const [isRead, setIsRead] = useState(false);
     const [isModified, setIsModified] = useState(false);
@@ -34,6 +34,8 @@ const NoticeItem = ({notice}) => {
                         
                         </>
                 )}
+
+                    <button onClick={()=>deleteNotice(notice.id)}>delete</button>
                 </div>
             ):(
                 <div>
