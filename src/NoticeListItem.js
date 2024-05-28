@@ -60,30 +60,30 @@ const NoticeListItem = ({
 
   return (
     <Box>
-      <ItemBox>
-        <DetailBox>
-          <TitleBox>
-            <Id>{id}</Id>
-            <Author>{author}</Author>
-            <Title>{title}</Title>
-          </TitleBox>
-          <Detail>{detail}</Detail>
-        </DetailBox>
-
-        {update === true ? (
-          <UpdateInputBox>
-            <TitleInput onChange={handleTitle} value={inputTitle} />
-            <AuthorInput onChange={handleAuthor} value={inputAuthor} />
-            <DetailInput onChange={handleDetail} value={inputDetail} />
-            <InputBtn onClick={updateNotice}>제출</InputBtn>
-          </UpdateInputBox>
-        ) : (
+      {update === true ? (
+        <UpdateInputBox>
+          <TitleInput onChange={handleTitle} value={inputTitle} />
+          <AuthorInput onChange={handleAuthor} value={inputAuthor} />
+          <DetailInput onChange={handleDetail} value={inputDetail} />
+          <InputBtn onClick={updateNotice}>제출</InputBtn>
+        </UpdateInputBox>
+      ) : (
+        <ItemBox>
+          <DetailBox>
+            <TitleBox>
+              <Id>{id}</Id>
+              <Author>{author}</Author>
+              <Title>{title}</Title>
+            </TitleBox>
+            <Detail>{detail}</Detail>
+          </DetailBox>
           <BtnBox>
             <Btn onClick={updateState}>수정</Btn>
             <Btn onClick={deleteNotice}>삭제</Btn>
           </BtnBox>
-        )}
-      </ItemBox>
+        </ItemBox>
+      )}
+
       <hr />
     </Box>
   );
@@ -103,6 +103,8 @@ const DetailBox = styled.div`
 const TitleBox = styled.div`
   display: flex;
   gap: 30px;
+  font-weight: bold;
+  font-size: 20px;
 `;
 
 const Id = styled.div`
