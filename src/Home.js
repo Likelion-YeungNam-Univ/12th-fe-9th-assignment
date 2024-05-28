@@ -3,7 +3,7 @@ const Home = () => {
       <div className="home-content">
         <div className="left-section">
           <div className="content">
-            <h1>Women Leaders in Tech Are Paving the Way in GenAI</h1>
+            <h1>As a top consulting firm, BCG helps clients with total transformation—driving complex change, enabling organizations to grow, and driving bottom-line impact.</h1>
             <p>READ NOW</p>
           </div>
         </div>
