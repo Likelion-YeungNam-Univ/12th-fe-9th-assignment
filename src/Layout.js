@@ -1,34 +1,17 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import './Layout.css'; 
 
 const Layout = () => {
-  const navigate = useNavigate();
-
-  const onClickNavbtn = (e) => {
-    e.preventDefault();
-    e.target.innerText === 'signin' ? navigate('/signin') : navigate('/');
-  };
-
-  const moveToSignIn = (e) => {
-    e.preventDefault();
-    navigate("/signin");
-  };
-
-  const moveToHome = (e) => {
-    e.preventDefault();
-    navigate("/");
-  };
-
   return (
     <div className="layout">
       <div className="navbar">
         <div className="navbar-logo">BCG</div>
         <ul className="navbar-links">
-          <li><a href="/" onClick={moveToHome}>Home</a></li>
-          <li><a href="/signin" onClick={moveToSignIn}>Sign In</a></li>
-          <li><a href="#" onClick={onClickNavbtn}>About</a></li>
-          <li><a href="#" onClick={onClickNavbtn}>Goals</a></li>
-          <li><a href="#" onClick={onClickNavbtn}>Notices</a></li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/signin">Sign In</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/goals">Goals</Link></li>
+          <li><Link to="/notices">Notices</Link></li>
         </ul>
       </div>
       <Outlet />
