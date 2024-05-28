@@ -4,7 +4,7 @@ import React from "react";
 const Home=()=>{
     return(
         <div>
-            <h1>This is Home.</h1>
+            <p>this is 소개</p>
         </div>
     );
 }

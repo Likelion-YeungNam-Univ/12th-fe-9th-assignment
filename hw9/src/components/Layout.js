@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 
-
 const Layout=()=>{
     
     const navigate=useNavigate();
@@ -27,7 +26,7 @@ const Layout=()=>{
     return(
         <NavBar>
             <Logo>
-                <p>kokoa</p>
+                <a href="#">logo</a>
             </Logo>
             <div className="navBtn">
                 <Button onClick={onClickHomeBtn}>소개</Button>
@@ -43,11 +42,14 @@ const Layout=()=>{
 const NavBar =styled.div`
     display: flex;
     justify-content: left;
+    overflow: hidden;
+    
 `;
 
-const Logo = styled.h1`
+const Logo = styled.a`
 color: black;
 font-size:30px;
+text-decoration: none;
 font-family:"굴림";
 font-weight: 300;
 margin: 10px;
