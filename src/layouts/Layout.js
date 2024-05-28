@@ -1,5 +1,5 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 
 const Layout = () => {
@@ -24,12 +24,14 @@ const Layout = () => {
             scale : 1.05 1.05;
         }
     `;
+
+    const navigate = useNavigate();
     return (
       <>
         <Navbar>
-            <NavItem>회사 소개</NavItem>
-            <NavItem>회사 목표</NavItem>
-            <NavItem>게시판</NavItem>
+            <NavItem onClick={()=> navigate('/')}>회사 소개</NavItem>
+            <NavItem onClick={()=> navigate('/goal')}>회사 목표</NavItem>
+            <NavItem onClick={()=> navigate('/notice')}>게시판</NavItem>
         </Navbar> 
         <Outlet/>
       </>
