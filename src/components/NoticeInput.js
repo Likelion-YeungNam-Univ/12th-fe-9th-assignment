@@ -71,18 +71,13 @@ const NoticeInput = ({ setPost, toUpdatePost, post, setToUpdatePost}) => {
     const addPost = (e) => { 
 
         const id = toUpdatePost ? toUpdatePost.id : post.length+1;
-        console.log('id', id);
-        // console.log('toUpdatePost.id', toUpdatePost.id);
-
         
         if (toUpdatePost) { 
             setPost(prev => prev.map(el => {
-                if (el.id === toUpdatePost.id) {
-                    console.log("excuted");
+                if (el.id === toUpdatePost.id)
                     return { id: toUpdatePost.id, title, description, author};
-                } else {
+                else
                     return el;
-                }
             }));
             setToUpdatePost(null);
         }

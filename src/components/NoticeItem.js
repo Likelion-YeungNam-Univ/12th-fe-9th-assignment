@@ -39,19 +39,16 @@ const NoticeItem = ({ post, setPost, setToUpdatePost }) => {
   `;
 
   const deletePost = (postId) => {
-    console.log('clicked');
     setPost(prev => {
-      console.log(prev);
       return prev.filter(el => el.id !== postId);
     });
   }
   
-  const clickPostHandler = (e) => { 
+  const clickPostHandler = () => { 
     setToUpdatePost(post);
-    console.log(e)
   }
   return (
-    <Wrapper onClick={(e)=> clickPostHandler(e)}>
+    <Wrapper onClick={()=> clickPostHandler()}>
       <Id>{post.id}</Id>
       <Title>{post.title}</Title>
       <Author>{post.author}</Author>
