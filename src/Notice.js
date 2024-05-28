@@ -1,46 +1,50 @@
-import { useState } from "react"
-import NoticeList from "./NoticeList";
 
-const postlist = [
-    {id: 1, body:'hi'},
-    {id: 2, body:'hello'},
-    {id: 3, body:'notice'}
-]
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
+import NoticeList from "./NoticeList";
+import NoticeCreate from "./NoticeCreate";
 
 const Notice = () => {
+    
+    const [noticeList, setNoticeList] = useState([]);
+    const [noticeCreate, setNoticeCreate] = useState(false);
 
-    const [posts,setPosts] = useState(postlist);
+    const handlePostNotice = (newNotice) => {
+        setNoticeList([...noticeList, newNotice]);
+        setNoticeCreate(false);
+    };
 
-    const createNotice = (e) => {
-        e.preventDefault()
-        const newPosts = [...posts, {id: Date.now(), body: document.getElementById('post').value}];
-        setPosts(newPosts);
-        console.log(posts);
-    }
-
-    const deletePost = (id) => {
-        const newPosts = posts.filter((e)=>{
-            if (e.id === id){
-                return false
+    const deleteNotice = (id) => {
+        const newNoticeList = noticeList.filter((e)=>{
+            if(e.id === id){
+                return false;
             } else{
-                return true
+                return true;
             }
         })
-        setPosts(newPosts);
+        setNoticeList(newNoticeList);
     }
-    
-    console.log(posts)
+
+    console.log(noticeList)
 
     return(
         <div>
             <h2>Notice Page</h2>
             <div>
-                <input type="text" placeholder="내용입력" id="post"></input>
-                <input type="button" value="create" onClick={createNotice}></input>
-                <ul>
-                    <NoticeList id={posts.id} body={posts.body} deletePost={deletePost}/>
-                </ul>
+
+                {noticeCreate?(
+                    <NoticeCreate handlePostNotice={handlePostNotice}/>
+                ):(
+                    <button onClick={()=>setNoticeCreate(true)}>write</button>
+                )}
             </div>
+
+            {/* notice 생성 중에 공지 리스트 안보이도록 함 */}
+            {!noticeCreate && <ul>
+                <NoticeList noticeList={noticeList} deleteNotice={deleteNotice}></NoticeList>
+            </ul>}
+
+            <Outlet/>
         </div>
     )
 }

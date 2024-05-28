@@ -1,13 +1,19 @@
-import React from "react";
-import NoticeListItem from "./NoticeListItem";
 
-const NoticeList = ({posts, deletePost}) => {
+import NoticeItem from "./NoticeItem";
+
+const NoticeList = ({noticeList, deleteNotice}) => {
+
+
     return(
-        <>
-            {posts && posts.prototype.map((e)=>(
-                <NoticeListItem id={e.id} body={e.body} deletePost={deletePost}/>
-            ))}
-        </>
+        <div>
+            {noticeList && noticeList.map((e)=>{
+                return (
+                    <div key={e.id}>
+                        <NoticeItem notice={e} deleteNotice={deleteNotice}/>
+                    </div>
+                )
+            })}
+        </div>
     )
 }
 
