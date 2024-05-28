@@ -66,7 +66,7 @@ const Notice = () => {
                   })}
               </Left>
               <Right>
-                  <NoticeInput></NoticeInput>
+                  <NoticeInput setPost={setPost}></NoticeInput>
               </Right>
           </Main>
       </Wrapper>
